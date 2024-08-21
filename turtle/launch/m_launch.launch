@@ -1,4 +1,0 @@
-<launch>
-<node name="turtle" pkg="turtlesim" type="turtlesim_node"/>
-<node name="m_move" pkg="turtle" type="mm_letter.py"/>
-</launch>
