@@ -9,7 +9,6 @@
     <color rgba="1 1 1 1"/>
   </material>
 
-
   <material name="red">
     <color rgba="1 0 0 1"/>
   </material>
@@ -19,27 +18,27 @@
   </material>
 
   <gazebo reference="base_link">
-  <material>Gazebo/Blue</material>
+   <material>Gazebo/Blue</material>
   </gazebo>
 
   <gazebo reference="right_wheel">
-  <material>Gazebo/Red</material>
+   <material>Gazebo/Red</material>
   </gazebo>
 
   <gazebo reference="left_wheel">
-  <material>Gazebo/Red</material>
+   <material>Gazebo/Red</material>
   </gazebo>
 
   <gazebo reference="sphere">
-  <material>Gazebo/White</material>
+   <material>Gazebo/White</material>
   </gazebo>
 
   <gazebo reference="lidar">
-  <material>Gazebo/Black</material>
+   <material>Gazebo/Black</material>
   </gazebo>
 
   <gazebo reference="base_link">
-  <material>Gazebo/Blue</material>
+   <material>Gazebo/Blue</material>
   </gazebo>
 
   <link name="base_link">
@@ -83,10 +82,10 @@
   </link>
   
   <joint name="base_right_wheel_joint" type="continuous">
-  <parent link="base_link"/>
-  <child link="right_wheel"/>
-  <origin xyz="0.1 0.125 0"/>
-  <axis xyz="0 1 0"/>
+   <parent link="base_link"/>
+   <child link="right_wheel"/>
+   <origin xyz="0.1 0.125 0"/>
+   <axis xyz="0 1 0"/>
   </joint>
 
   <link name="left_wheel">
@@ -110,10 +109,10 @@
   </link>
   
   <joint name="base_left_wheel_joint" type="continuous">
-  <parent link="base_link"/>
-  <child link="left_wheel"/>
-  <origin xyz="0.1 -0.125 0"/>
-  <axis xyz="0 1 0"/>
+   <parent link="base_link"/>
+   <child link="left_wheel"/>
+   <origin xyz="0.1 -0.125 0"/>
+   <axis xyz="0 1 0"/>
   </joint>
 
   <link name="sphere">
@@ -138,11 +137,11 @@
 
   
   
-  <joint name="base_sphere_joint" type="fixed">
-  <parent link="base_link"/>
-  <child link="sphere"/>
-  <origin xyz="-0.1 0 0"/>
-  <axis xyz="0 0 0"/>
+  <joint name="base_sphere_joint" type="continuous">
+   <parent link="base_link"/>
+   <child link="sphere"/>
+   <origin xyz="-0.1 0 0"/>
+   <axis xyz="0 1 1"/>
   </joint>
 
   <link name="imu_link">
@@ -166,10 +165,10 @@
   </link>
 
   <joint name="base_imu_joint" type="fixed">
-  <parent link="base_link"/>
-  <child link="imu_link"/>
-  <origin xyz="-0.05 0 0.105"/>
-  <axis xyz="0 0 0"/>
+   <parent link="base_link"/>
+   <child link="imu_link"/>
+   <origin xyz="-0.05 0 0.105"/>
+   <axis xyz="0 0 0"/>
   </joint>
 
   <link name="lidar">
@@ -193,15 +192,15 @@
   </link>
   
   <joint name="base_lidar_joint" type="fixed">
-  <parent link="base_link"/>
-  <child link="lidar"/>
-  <origin xyz="-0.1 0 0.105"/>
-  <axis xyz="0 0 0"/>
+   <parent link="base_link"/>
+   <child link="lidar"/>
+   <origin xyz="-0.1 0 0.105"/>
+   <axis xyz="0 0 0"/>
   </joint>
 
   <!-- Gazebo Plugin for Differential Drive -->
-  <gazebo>
- <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+ <gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
     <ros>
       <namespace>/</namespace>
       <argument>odom</argument>
@@ -211,7 +210,7 @@
     <leftJoint>base_left_wheel_joint</leftJoint>
     <rightJoint>base_right_wheel_joint</rightJoint>
     <wheelSeparation>0.3</wheelSeparation>
-    <wheelDiameter>0.1</wheelDiameter>
+    <wheelDiameter>0.12</wheelDiameter>
     <torque>5.0</torque>
     <commandTopic>cmd_vel</commandTopic>
     <odometryTopic>odom</odometryTopic>
@@ -225,10 +224,10 @@
     <odometrySource>0</odometrySource>
     <publishTf>true</publishTf>
   </plugin>
-  </gazebo>
+ </gazebo>
 
-  <gazebo reference="lidar">
-	<sensor type="gpu_ray" name="head_rplidar_sensor">
+ <gazebo reference="lidar">
+	 <sensor type="gpu_ray" name="head_rplidar_sensor">
 		<pose>0 0 0 0 0 0</pose>
 		<visualize>true</visualize>
 		<update_rate>10</update_rate>
@@ -256,10 +255,10 @@
 			<topicName>/scan</topicName>
 			<frameName>lidar</frameName>
 		</plugin>
-	</sensor>
-</gazebo>
+	 </sensor>
+ </gazebo>
 
-<gazebo reference="imu_link">
+ <gazebo reference="imu_link">
     <gravity>true</gravity>
     <sensor name="imu_sensor" type="imu">
       <always_on>true</always_on>
@@ -278,5 +277,5 @@
       </plugin>
       <pose>0 0 0 0 0 0</pose>
     </sensor>
-  </gazebo>
+ </gazebo>
 </robot>
