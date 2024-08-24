@@ -4,5 +4,5 @@
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d$(find robot_model)/rviz_config/robot.rviz"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_model)/maps/map.yaml"/>
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_model)/maps/map.yaml"/> -->
 </launch>

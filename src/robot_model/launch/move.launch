@@ -27,10 +27,10 @@
     <arg name="gui" value="true"/>
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
-    <arg name="world_name" value="$(find robot_model)/worlds/maze.world"/>
+    <arg name="world_name" value="$(find robot_model)/worlds/simple_maze.world"/>
   </include>
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen" args="-param robot_description -urdf -model model -z 0.1"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d$(find robot_model)/rviz_config/robot.rviz"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_model)/maps/map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_model)/maps/simple_map.yaml"/>
 
 </launch> 
